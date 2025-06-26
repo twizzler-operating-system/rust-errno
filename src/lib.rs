@@ -2,7 +2,7 @@
 //!
 //! # Examples
 //! ```
-//! use errno::{Errno, errno, set_errno};
+//! use errno::{errno, set_errno, Errno};
 //!
 //! // Get the current value of errno
 //! let e = errno();
@@ -17,13 +17,14 @@
 //! println!("Error {}: {}", code, e);
 //! ```
 
+#![allow(unexpected_cfgs)]
 #![cfg_attr(not(feature = "std"), no_std)]
 
 #[cfg_attr(unix, path = "unix.rs")]
 #[cfg_attr(windows, path = "windows.rs")]
 #[cfg_attr(target_os = "wasi", path = "wasi.rs")]
 #[cfg_attr(target_os = "hermit", path = "hermit.rs")]
-#[cfg_attr(target_os = "twizzler", path = "hermit.rs")]
+#[cfg_attr(target_os = "twizzler", path = "unix.rs")]
 mod sys;
 
 use core::fmt;
