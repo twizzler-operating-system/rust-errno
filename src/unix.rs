@@ -13,6 +13,7 @@
 // except according to those terms.
 
 use core::str;
+
 use libc::{self, c_int, size_t, strerror_r, strlen};
 
 use crate::Errno;
@@ -95,6 +96,7 @@ extern "C" {
             target_os = "redox",
             target_os = "dragonfly",
             target_os = "emscripten",
+            target_os = "twizzler",
         ),
         link_name = "__errno_location"
     )]
